@@ -1,0 +1,38 @@
+[project]
+name = "myproject"
+version = "0.0.1"
+description = "tweet with python"
+authors = ["johnconnor-sec"]
+license = "MIT"
+dependencies = [
+    "imghdr2",
+    "tweepy>=4.14.0",
+]
+
+[tool.poetry]
+name = "xp"
+version = "0.1.0"
+description = "A command line tool for post and scheduling tweets"
+authors = ["John <john.connor.sec7@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+datetime = "^5.5"
+dateparser = "^1.2.0"
+tweepy = "^4.14.0"
+python-dotenv = "^1.0.1"
+cryptography = "^44.0.0"
+pathlib = "^1.0.1"
+pytest = "^8.3.4"
+pytz = "^2024.2"
+twitter-api = "^0.1.7"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+build = "build_script:build_executable"
