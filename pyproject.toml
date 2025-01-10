@@ -1,14 +1,28 @@
 [project]
-name = "myproject"
-version = "0.0.1"
-description = "tweet with python"
-authors = ["johnconnor-sec"]
-license = "MIT"
+name = "xp"
+version = "0.1.0"
+description = "A command line tool for post and scheduling tweets"
+authors = [
+    "johnconnor-sec",
+    {name = "John", email = "john.connor.sec7@gmail.com"},
+]
+license = {text = "MIT"}
 dependencies = [
     "imghdr2",
     "tweepy>=4.14.0",
+    "datetime<6.0,>=5.5",
+    "dateparser<2.0.0,>=1.2.0",
+    "tweepy<5.0.0,>=4.14.0",
+    "pytest<9.0.0,>=8.3.4",
+    "pyinstaller<7.0.0,>=6.11.1",
+    "standard-imghdr<4.0.0,>=3.13.0",
 ]
+requires-python = "<3.14,>=3.12"
+readme = "README.md"
 
+
+[project.scripts]
+build = "build_script:build_executable"
 [tool.poetry]
 name = "xp"
 version = "0.1.0"
@@ -24,11 +38,15 @@ dateparser = "^1.2.0"
 tweepy = "^4.14.0"
 pytest = "^8.3.4"
 pyinstaller = "^6.11.1"
+standard-imghdr = "^3.13.0"
 
 
+
+[tool.pdm.build]
+includes = []
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
 
 [tool.poetry.scripts]
 build = "build_script:build_executable"
