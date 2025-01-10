@@ -15,8 +15,8 @@ A command-line tool for posting and scheduling tweets/posts to X (formerly Twitt
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/johnconnor-sec/xp.git
-cd xp
+git clone https://github.com/johnconnor-sec/xpost.git
+cd xpost
 ```
 
 2. Build and install using the build script:
