@@ -31,7 +31,12 @@ def create_api():
         access_token_secret=credentials["access_token_secret"]
     )
 
-    return client 
+    auth = tweepy.OAuthHandler(credentials["consumer_key"], credentials["consumer_secret"])
+    auth.set_access_token(credentials["access_token"], credentials["access_token_secret"])
+
+    api = tweepy.API(auth)
+
+    return client, api
 
 def post_tweet(client, post, in_reply_to_id=None):
     """
@@ -140,4 +145,30 @@ def post_pending_tweets(client):
         print("Error posting pending tweets:", e)
     finally:
         conn.close()
+
+def retrieve_timeline(client, api, count=20):
+    """
+    Retrieve the latest tweets from the user's timeline.
+
+    Args:
+        client (tweepy.Client): The Tweepy Client object.
+        count (int, optional): The number of tweets to retrieve.
+
+    Returns:
+        list: The list of tweets.
+    """
+    try:
+        response = api.home_timeline(
+            count=count,
+            # tweet_fields=["created_at", "author_id", "conversation_id", "public_metrics"]
+        )
+
+        if response.data:
+            for tweet in tweets:
+                print(f"Tweet by {tweet.user.screen_name},{tweet.id}: {tweet.text}")
+            return response.data
+        return []
+    except Exception as e:
+        print("Error retrieving timeline:", e)
+        return []
 

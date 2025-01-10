@@ -4,7 +4,7 @@ import schedule
 import time
 from pathlib import Path
 
-from api import post_pending_tweets
+from api import post_pending_tweets, create_api, retrieve_timeline
 from db import add_tweet, get_scheduled_tweets
 
 def create_parser() -> argparse.ArgumentParser:
@@ -80,7 +80,25 @@ def create_parser() -> argparse.ArgumentParser:
         action='store_true',
         help='Show full tweet content'
     )
-    
+
+    # Cancel commands
+    cancel_parser = subparsers.add_parser('cancel', help='Cancel a scheduled thread')
+    cancel_parser.add_argument(
+        'id',
+        type=int,
+        help='ID of the scheduled thread to cancel'
+    )
+
+    # Retrieve timeline
+    timeline_parser = subparsers.add_parser('timeline', help='Retrieve your tweets from people you follow. NOTE: This feature is only available to paid Twitter API access user. Learn more at https://developer.twitter.com/en/products/twitter-api')
+    timeline_parser.add_argument(
+        '--count', '-c',
+        type=int,
+        default=20,
+        help='Number of tweets to retrieve (default: 20)'
+    )
+
+    # Run command
     run_parser = subparsers.add_parser('run', help='Run the Tweet Scheduler to post pending tweets.')
     run_parser.add_argument(
         dest="run",
@@ -150,6 +168,11 @@ def parse_args():
             if not input("\nContinue? [y/N] ").lower().startswith('y'):
                 print("Cancelled.")
                 sys.exit(0)
+
+    elif args.command == 'timeline':
+        client, api = create_api()
+        retrieve_timeline(client, api, args.count)
+        sys.exit(0)
 
     return args, tweets
 
