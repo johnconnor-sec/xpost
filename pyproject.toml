@@ -17,7 +17,7 @@ dependencies = [
     "pyinstaller<7.0.0,>=6.11.1",
     "standard-imghdr<4.0.0,>=3.13.0",
 ]
-requires-python = "<3.14,>=3.12"
+requires-python = ">=3.12,<3.14"
 readme = "README.md"
 
 
@@ -33,6 +33,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.12,<3.14"
+pyinstaller = "^6.11.1"
 datetime = "^5.5"
 dateparser = "^1.2.0"
 tweepy = "^4.14.0"
