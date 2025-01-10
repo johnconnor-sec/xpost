@@ -16,7 +16,6 @@ def create_api():
     """
     # Check for credentials
     credentials = load_credentials()
-    print("Debug: loaded credentials:",{k: '***' for k in credentials.keys()} if credentials else None)
     
     # If credentials are not found, run the setup wizard
     if not credentials:

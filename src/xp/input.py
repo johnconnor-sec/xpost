@@ -145,8 +145,6 @@ def parse_args():
     """Parse command line arguments and handle input."""
     parser = create_parser()
     args = parser.parse_args()
-
-    print(f"Debug: Got args: {args}")
     
     if not args.command:
         parser.print_help()
@@ -156,7 +154,6 @@ def parse_args():
     tweets = []
     if args.command in ('post', 'schedule'):
         tweets = get_tweets_input(args)
-        print(f"Debug: Got tweets: {tweets}")
 
         if not tweets:
             print("Error: No tweets provided")

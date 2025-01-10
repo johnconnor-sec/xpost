@@ -22,11 +22,9 @@ def main():
     args, tweets = parse_args()
     
     if args.command == 'post':
-        print(f"Debug: Posting tweets: {tweets}")
 
         if len(tweets) == 1:
             # Post a single tweet
-            print(f"Debug: Posting tweet: {tweets[0]}")
             success, _ = post_tweet(client, tweets[0])
             if success:
                 print(f"Tweet posted: {tweets[0]}")
@@ -61,7 +59,6 @@ def main():
             status=args.status if hasattr(args, 'status') else None,
             verbose=args.verbose if hasattr(args, 'verbose') else False
         )
-        print(f"Debug: Listing tweets: {args.status}, {args.verbose}")
 
     elif args.command == 'run':
         # Run the scheduler
