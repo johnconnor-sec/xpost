@@ -1,4 +1,4 @@
-# xp - X Post Scheduler
+# xpost - X Post Scheduler
 
 A command-line tool for posting and scheduling tweets/posts to X (formerly Twitter).
 
