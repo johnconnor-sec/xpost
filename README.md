@@ -21,6 +21,7 @@ cd xpost
 
 2. Build and install using the build script:
 ```bash
+uv venv
 poetry install
 poetry run build
 ```
