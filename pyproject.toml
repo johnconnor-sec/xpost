@@ -17,12 +17,13 @@ dependencies = [
     "pyinstaller<7.0.0,>=6.11.1",
     "standard-imghdr<4.0.0,>=3.13.0",
 ]
-requires-python = ">=3.12,<3.14"
+requires-python = ">=3.8,<3.14"
 readme = "README.md"
 
 
 [project.scripts]
 build = "build_script:build_executable"
+
 [tool.poetry]
 name = "xp"
 version = "0.1.0"
@@ -38,8 +39,9 @@ datetime = "^5.5"
 dateparser = "^1.2.0"
 tweepy = "^4.14.0"
 pytest = "^8.3.4"
-pyinstaller = "^6.11.1"
+# pyinstaller = "^6.11.1"
 standard-imghdr = "^3.13.0"
+schedule = "^1.2.2"
 
 
 

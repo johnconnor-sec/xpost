@@ -16,7 +16,7 @@ def main():
     init_db()
 
     # Create the Tweepy API client
-    client = create_api()
+    client, api = create_api()
 
     # Parse command line arguments
     args, tweets = parse_args()
